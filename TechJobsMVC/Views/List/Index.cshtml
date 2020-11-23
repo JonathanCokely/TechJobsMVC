@@ -1,4 +1,4 @@
-﻿<div class="container body-content">
+﻿    <div class="container body-content">
     <h1>@ViewBag.title</h1>
     <h2 class="centered">View Jobs By Category</h2>
 </div>
@@ -11,11 +11,17 @@
         }
     </tr>
     <tr>
-        @{
-            //TODO #2: Complete the View Jobs By Category Table
-        }
+            @*//TODO #2: Complete the View Jobs By Category Table*@
+      
 
-        <td></td> @* Feel free to remove or modify this element if necessary. *@
+        <td>
+            <ul>
+                <li>
+                    <a asp-controller="List" asp-action="Jobs" asp-route-column="All" asp-route-value="@ViewBag.jobs">All Jobs</a>
+                </li>
+            </ul>
+        </td> @* Feel free to remove or modify this element if necessary. *@
+
         @foreach (var category in ViewBag.tableChoices)
         {
             <td>
