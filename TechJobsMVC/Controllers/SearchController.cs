@@ -23,8 +23,9 @@ namespace TechJobsMVC.Controllers
 
         public IActionResult Results(string searchType, string searchTerm)
         {
+            ViewBag.columns = ListController.ColumnChoices;
             List<Job> jobs;
-            if (searchTerm.Equals("") || searchTerm.Equals(null))
+            if (String.IsNullOrEmpty(searchTerm))
             {
                 jobs = JobData.FindAll();
                 ViewBag.title = "All Jobs";
@@ -36,7 +37,7 @@ namespace TechJobsMVC.Controllers
             }
             ViewBag.jobs = jobs;
 
-            return View();
+            return View("Index");
         }
     }
 }
