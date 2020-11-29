@@ -36,6 +36,7 @@ namespace TechJobsMVC.Controllers
                 ViewBag.title = "Jobs with " + ViewBag.columns[searchType] + ": " + searchTerm;
             }
             ViewBag.jobs = jobs;
+            ViewBag.count = jobs.Count;
 
             return View("Index");
         }

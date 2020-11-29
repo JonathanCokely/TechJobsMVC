@@ -29,5 +29,30 @@
     @{
         //TODO #4: Loop over the search results to display all job fields.
     }
+    
+    @if(ViewBag.jobs != null)
+    {
+        <table class="job-listing">
+            @foreach (var job in ViewBag.jobs)
+            {
+                <tr>
+                    <td style="white-space: pre-line">
+                        ID: @job.Id
+                        Name: @job.Name
+                        Employer: @job.Employer
+                        Location: @job.Location
+                        Position Type: @job.PositionType
+                        Skill: @job.CoreCompetency
+                    </td>
+                </tr>
+            }
+        </table>
+    }
+
+    @if(ViewBag.count == 0)
+    {
+        <h2>No jobs found!</h2>
+    }
+
 
 </div>
