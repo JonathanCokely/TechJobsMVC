@@ -49,11 +49,11 @@
                     <td style="white-space: pre-line">
                         ID: @job.Id
                         Name: @job.Name
-                        Employer: @job.Employer
-                        Location: @job.Location
-                        Position Type: @job.PositionType
-                        Skill: @job.CoreCompetency
-                    </td>
+                        <a asp-controller="Search" asp-action="Results" asp-route-searchType="employer" asp-route-searchTerm="@job.Employer">Employer: @job.Employer</a>
+                        <a asp-controller="Search" asp-action="Results" asp-route-searchType="location" asp-route-searchTerm="@job.Location">Location: @job.Location</a>
+                        <a asp-controller="Search" asp-action="Results" asp-route-searchType="positionType" asp-route-searchTerm="@job.PositionType">Position Type: @job.PositionType</a>
+                        <a asp-controller="Search" asp-action="Results" asp-route-searchType="coreCompetency" asp-route-searchTerm="@job.CoreCompetency">Skill: @job.CoreCompetency</a>
+</td>
                 </tr>
             }
         </table>
