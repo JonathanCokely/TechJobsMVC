@@ -16,7 +16,9 @@ namespace TechJobsMVC.Controllers
         public IActionResult Index()
         {
             ViewBag.columns = ListController.ColumnChoices;
+            ViewBag.searchType = "all";
             return View();
+
         }
 
         // TODO #3: Create an action method to process a search request and render the updated search view. 
@@ -25,18 +27,24 @@ namespace TechJobsMVC.Controllers
         {
             ViewBag.columns = ListController.ColumnChoices;
             List<Job> jobs;
+
             if (String.IsNullOrEmpty(searchTerm))
             {
                 jobs = JobData.FindAll();
                 ViewBag.title = "All Jobs";
+                ViewBag.searchType = "all";
+                
             }
             else
             {
                 jobs = JobData.FindByColumnAndValue(searchType, searchTerm);
                 ViewBag.title = "Jobs with " + ViewBag.columns[searchType] + ": " + searchTerm;
+                ViewBag.searchType = searchType;
             }
+
             ViewBag.jobs = jobs;
             ViewBag.count = jobs.Count;
+
 
             return View("Index");
         }

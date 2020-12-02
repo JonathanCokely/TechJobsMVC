@@ -1,4 +1,11 @@
-﻿<div class="container body-content">
+﻿@{bool isChecked(string argument)
+    {
+        return ViewBag.searchType==argument;
+    };
+
+}
+
+<div class="container body-content">
 
     <h1>@ViewBag.title</h1>
 
@@ -8,8 +15,11 @@
         <p>
             @foreach (var column in ViewBag.columns)
             {
+
+
+
                 <span>
-                    <input type="radio" name="searchType" id="@column.Key" value="@column.Key" checked="@column.Key == 'all'" />
+                    <input type="radio" name="searchType" id="@column.Key" value="@column.Key" checked="@isChecked(column.Key)" />
                     <label for="@column.Key">@column.Value</label>
                 </span>
             }
@@ -29,8 +39,8 @@
     @{
         //TODO #4: Loop over the search results to display all job fields.
     }
-    
-    @if(ViewBag.jobs != null)
+
+    @if (ViewBag.jobs != null)
     {
         <table class="job-listing">
             @foreach (var job in ViewBag.jobs)
@@ -49,7 +59,7 @@
         </table>
     }
 
-    @if(ViewBag.count == 0)
+    @if (ViewBag.count == 0)
     {
         <h2>No jobs found!</h2>
     }
